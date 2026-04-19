@@ -213,6 +213,18 @@
         border-radius: var(--radius-sm);
     }
 
+    a:visited {
+        color: #87b;
+    }
+
+    a:hover {
+        color: #666;
+    }
+
+    a:active {
+        color: #e90;
+    }
+
     /* Out-of-date flag */
     .flagged {
         display: inline-flex;
