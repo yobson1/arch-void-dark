@@ -1,0 +1,404 @@
+/* ==UserStyle==
+@name         Arch - Void Dark
+@namespace    https://archlinux.org
+@version      1.0.0
+@description  Modern dark theme for the Archlinux.org AUR, Security and base domain pages.
+@author       yobson
+==/UserStyle== */
+
+@-moz-document regexp("^https?:\\/\\/((aur|security)\\.)?archlinux\\.org\\/.*$") {
+    /* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+    :root {
+        --bg-base: #0d0f11;
+        --bg-surface: #141619;
+        --bg-raised: #1a1d21;
+        --bg-overlay: #1f2328;
+        --bg-hover: #242830;
+        --accent: #1793d1;
+        --accent-muted: rgba(23, 147, 209, 0.12);
+        --accent-border: rgba(23, 147, 209, 0.3);
+        --green: #3fb950;
+        --green-bg: rgba(63, 185, 80, 0.1);
+        --yellow: #d29922;
+        --red: #f85149;
+        --red-bg: rgba(248, 81, 73, 0.08);
+        --orange: #e3832e;
+        --text-primary: #e2e8f0;
+        --text-secondary: #94a3b8;
+        --text-muted: #64748b;
+        --text-disabled: #475569;
+        --text-link: #60b8e8;
+        --text-link-hover: #93d0f4;
+        --border-subtle: #1e2530;
+        --border-default: #2a3344;
+        --border-strong: #3a4556;
+        --radius-sm: 4px;
+        --radius-md: 6px;
+        --radius-lg: 8px;
+        --font-mono:
+            "JetBrains Mono", "Fira Code", "Cascadia Code", ui-monospace,
+            monospace;
+        --font-sans: -apple-system, "Segoe UI", system-ui, sans-serif;
+    }
+
+    /* ============================================================
+   GENERIC STYLES
+   ============================================================ */
+    body {
+        background: var(--bg-surface);
+        color: var(--text-primary);
+        font-family: var(--font-sans);
+    }
+
+    code {
+        background: var(--bg-hover);
+        color: var(--green);
+    }
+
+    pre code {
+        color: var(--bg-base);
+    }
+
+    pre {
+        border-radius: var(--radius-md);
+        margin-inline: 0;
+    }
+
+    .comment-header {
+        background: var(--bg-overlay);
+    }
+
+    .box {
+        background: var(--bg-surface) !important;
+        border: 1px solid var(--border-default) !important;
+        border-radius: var(--radius-lg) !important;
+        overflow: hidden !important;
+    }
+
+    #pkgsearch {
+        background: var(--accent);
+        border-radius: var(--radius-lg) !important;
+    }
+
+    table th {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-muted);
+        background: transparent !important;
+        border-bottom: 1px solid var(--border-subtle) !important;
+    }
+
+    table td {
+        border-bottom: 1px solid var(--border-subtle);
+        line-height: 1.55;
+    }
+
+    table tr {
+        background: transparent !important;
+    }
+
+    /* zebra stripe */
+    table tr:nth-child(even) {
+        background: rgba(255, 255, 255, 0.015) !important;
+    }
+
+    table {
+        background: transparent !important;
+    }
+
+    table.styled-table {
+        border: 1px solid var(--border-default) !important;
+    }
+
+    dl dt {
+        color: var(--text-secondary);
+    }
+
+    .button:not(.text-button),
+    input[type="submit"]:not(.text-button) {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        background: transparent;
+        background: var(--bg-raised);
+        border: 1px solid;
+        border-color: var(--border-strong) var(--bg-base) var(--bg-base)
+            var(--border-strong);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        padding-inline: 0.6em;
+    }
+
+    .button:not(.text-button):hover,
+    input[type="submit"]:not(.text-button):hover {
+        background: var(--bg-overlay);
+    }
+
+    .button:not(.text-button):active,
+    input[type="submit"]:not(.text-button):active {
+        background: var(--bg-raised);
+        border-color: var(--bg-base) var(--border-strong) var(--border-strong)
+            var(--bg-base);
+    }
+
+    input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 13px;
+        height: 13px;
+        background: var(--bg-raised);
+        border: 1px solid;
+        border-color: var(--bg-base) var(--border-strong) var(--border-strong)
+            var(--bg-base);
+        border-radius: 0;
+        cursor: pointer;
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    input[type="checkbox"]:checked {
+        background: var(--bg-raised);
+    }
+
+    input[type="checkbox"]:checked::after {
+        content: "✓";
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 1000;
+        line-height: 1;
+        color: var(--green);
+    }
+
+    input[type="checkbox"]:focus {
+        outline: none;
+        border-color: var(--bg-base) var(--accent) var(--accent) var(--bg-base);
+    }
+
+    select {
+        color: var(--text-primary);
+        background: var(--bg-raised);
+        border: 1px solid;
+        border-color: var(--bg-base) var(--border-strong) var(--border-strong)
+            var(--bg-base);
+        padding-inline: 4px;
+        border-radius: var(--radius-sm);
+    }
+
+    select:focus {
+        border-color: var(--bg-base) var(--accent) var(--accent) var(--bg-base);
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="search"],
+    input[type="email"],
+    textarea {
+        color: var(--text-primary);
+        background: var(--bg-raised);
+        border: 1px solid;
+        border-color: var(--bg-base) var(--border-strong) var(--border-strong)
+            var(--bg-base);
+        padding-inline: 4px;
+        border-radius: var(--radius-sm);
+    }
+
+    /* Out-of-date flag */
+    .flagged {
+        display: inline-flex;
+        font-weight: 600;
+        color: var(--red) !important;
+        background: var(--red-bg);
+        border: 1px solid rgba(248, 81, 73, 0.25);
+        border-radius: var(--radius-sm);
+        padding-right: 3px !important;
+    }
+
+    .error {
+        color: var(--red);
+    }
+
+    .flagged a {
+        color: var(--red) !important;
+    }
+
+    /* ============================================================
+   PACKAGE PAGE
+   ============================================================ */
+
+    #metadata {
+        margin-top: 1rem;
+    }
+
+    /* Package name heading inside the box (h2) */
+    #pkgdetails h2 {
+        font-family: var(--font-mono);
+        font-weight: 600;
+        border-bottom: 1px solid var(--border-default);
+    }
+
+    #pkgdetails .keyword {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--text-secondary);
+        background: var(--bg-overlay);
+        border: 1px solid var(--border-default);
+        border-radius: var(--radius-sm);
+        padding: 2px 8px;
+        margin: 2px 3px 2px 0;
+        text-decoration: none;
+        transition:
+            border-color 0.15s,
+            color 0.15s;
+    }
+
+    #pkgdetails .keyword:hover {
+        color: var(--accent);
+        border-color: var(--accent-border);
+        text-decoration: none;
+    }
+
+    #actionlist,
+    #elsewhere {
+        background: transparent !important;
+        border: 1px solid var(--border-default) !important;
+        border-radius: var(--radius-lg);
+    }
+
+    #actionlist h4,
+    #elsewhere h4 {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text-muted);
+        background: var(--bg-raised);
+        border-bottom: 1px solid var(--border-subtle);
+        margin: 0;
+        padding: 10px 16px;
+    }
+
+    #actionlist ul li,
+    #elsewhere ul li {
+        display: flex;
+        gap: 4px;
+        padding: 0 16px;
+        color: var(--text-muted); /* the "/" separator inherits this */
+        font-size: 0.72rem;
+    }
+
+    #actionlist ul li a:hover,
+    #actionlist ul li form input[type="submit"]:hover,
+    #actionlist ul li form button:hover,
+    #elsewhere ul li a:hover,
+    #elsewhere ul li form input[type="submit"]:hover,
+    #elsewhere ul li form button:hover {
+        color: var(--accent);
+        background: var(--accent-muted);
+        text-decoration: none;
+    }
+
+    #actionlist ul li a[href*="flag"] {
+        color: var(--yellow);
+    }
+
+    #actionlist ul li a[href*="flag"]:hover {
+        color: #e5b033;
+    }
+
+    .listing h3 {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text-muted);
+        background: var(--bg-overlay) !important;
+        border-bottom: 1px solid var(--border-subtle);
+        margin: 0;
+        padding: 10px 16px;
+    }
+
+    .listing ul li a,
+    .listing ul li form input,
+    #pkgsrcslist li a {
+        font-family: var(--font-mono);
+        background: none;
+        text-transform: none;
+    }
+
+    /* "makedepends" / "checkdepends" / "optdepends" labels that
+   aurweb appends in parentheses after dep names */
+    .listing ul li em {
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        color: var(--text-muted);
+    }
+
+    /* ============================================================
+   CGIT PAGES
+   ============================================================ */
+
+    div#cgit div.path {
+        background: var(--bg-raised);
+        color: var(--text-muted);
+    }
+
+    div#cgit div.content {
+        border-bottom: 3px solid var(--border-subtle);
+    }
+
+    div#cgit table.tabs {
+        border-bottom: 3px solid var(--border-subtle);
+    }
+
+    div#cgit table.tabs td a {
+        color: var(--text-muted);
+    }
+
+    div#cgit table.tabs td a.active {
+        color: var(--text-primary);
+        background: var(--bg-overlay);
+    }
+
+    div#cgit table.list td a {
+        color: var(--text-primary);
+    }
+
+    div#cgit table.diffstat {
+        border: 1px solid var(--border-default);
+    }
+
+    div#cgit table.diff td div.head {
+        color: var(--text-primary);
+    }
+
+    div#cgit code {
+        background: none;
+        color: var(--text-primary);
+    }
+
+    div#cgit table.blob .kwc,
+    div#cgit table.blob .opt {
+        color: #fff;
+    }
+
+    div#cgit div.cgit-panel table {
+        border: 1px solid var(--border-default);
+    }
+
+    div#cgit div.cgit-panel td {
+        padding: 0;
+    }
+}
