@@ -1,9 +1,12 @@
 /* ==UserStyle==
 @name         Arch - Void Dark
-@namespace    https://archlinux.org
 @version      1.1.0
+@namespace    yobson.xyz
 @description  Modern dark theme for the Archlinux.org AUR, Security and base domain pages.
-@author       yobson
+@author       yobson <contact@yobson.xyz> (https://yobson.xyz/)
+@homepageURL  https://github.com/yobson1/arch-void-dark
+@supportURL   https://github.com/yobson1/arch-void-dark/issues
+@license      MIT
 ==/UserStyle== */
 
 @-moz-document regexp("^https?:\\/\\/((aur|security)\\.)?archlinux\\.org\\/.*$") {
