@@ -23,3 +23,6 @@ jobs:
           generate_release_notes: true
           make_latest: true
           files: arch-void-dark.user.css
+
+      - name: Purge jsDelivr Cache
+        uses: List-KR/jsdelivr-purge@6.0.0
