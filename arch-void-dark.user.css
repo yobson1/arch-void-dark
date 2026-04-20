@@ -403,12 +403,7 @@
 
     div#cgit code {
         background: none;
-        color: var(--text-primary);
-    }
-
-    div#cgit table.blob .kwc,
-    div#cgit table.blob .opt {
-        color: #fff;
+        color: #a0a5d6ff;
     }
 
     div#cgit div.cgit-panel table {
@@ -417,5 +412,59 @@
 
     div#cgit div.cgit-panel td {
         padding: 0;
+    }
+
+    div#cgit table.blob .num {
+        color: #f6c177ff;
+    }
+    div#cgit table.blob .esc {
+        color: #ed9cc2ff;
+    }
+    div#cgit table.blob .str {
+        color: #74ccaaff;
+    }
+    div#cgit table.blob .dstr {
+        color: #74ccaaff;
+    }
+    div#cgit table.blob .sng {
+        color: #74ccaaff;
+    }
+    div#cgit table.blob .slc {
+        color: #656565ff;
+    }
+    div#cgit table.blob .com {
+        color: #656565ff;
+    }
+    div#cgit table.blob .dir {
+        color: #dce0e5ff;
+    }
+    div#cgit table.blob .sym {
+        color: #808080ff;
+    }
+    div#cgit table.blob .kwa {
+        color: #ed9cc2ff;
+    }
+    div#cgit table.blob .kwb {
+        color: #f6c177ff;
+    }
+    div#cgit table.blob .kwc {
+        color: #77b9c0ff;
+    }
+    div#cgit table.blob .kwd {
+        color: #77b9c0ff;
+    }
+    div#cgit table.blob .opt {
+        color: #d07468ff;
+    }
+
+    div#cgit table.diff td div.del,
+    div#cgit table.stats td.sum {
+        color: var(--red);
+    }
+    div#cgit table.diff td div.add {
+        color: var(--green);
+    }
+    div#cgit table.diff td div.hunk {
+        color: var(--accent);
     }
 }
