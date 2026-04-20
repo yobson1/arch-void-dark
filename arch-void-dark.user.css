@@ -281,6 +281,11 @@
         text-decoration: none;
     }
 
+    #pkgdetails .keyword:active {
+        color: var(--yellow);
+        border-color: var(--yellow);
+    }
+
     #actionlist,
     #elsewhere {
         background: transparent !important;
