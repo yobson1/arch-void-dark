@@ -216,15 +216,21 @@
         border-radius: var(--radius-sm);
     }
 
+    div#cgit a {
+        color: #07b;
+    }
+
     a:visited {
         color: #87b;
     }
 
-    a:hover {
+    a:hover,
+    div#cgit a:hover {
         color: #666;
     }
 
-    a:active {
+    a:active,
+    div#cgit a:active {
         color: #e90;
     }
 
