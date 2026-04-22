@@ -10,7 +10,7 @@
 @license      MIT
 ==/UserStyle== */
 
-@-moz-document regexp("^https?:\\/\\/((aur|security)\\.)?archlinux\\.org\\/.*$") {
+@-moz-document regexp("^https?:\\/\\/((aur|security|lists)\\.)?archlinux\\.org\\/.*$") {
     /* ============================================================
    DESIGN TOKENS
    ============================================================ */
@@ -212,11 +212,21 @@
         border-radius: var(--radius-sm);
     }
 
+    input[type="text"]:focus {
+        color: var(--text-primary);
+        background: var(--bg-raised);
+        border: 1px solid;
+        border-color: var(--bg-base) var(--accent) var(--accent) var(--bg-base);
+        padding-inline: 4px;
+        border-radius: var(--radius-sm);
+    }
+
     div#cgit a {
         color: #07b;
     }
 
-    a:visited {
+    /* only lists pages have `js-enabled` class, don't override visited on those */
+    body:not(.js-enabled) a:visited {
         color: #87b;
     }
 
@@ -471,5 +481,166 @@
     }
     div#cgit table.diff td div.hunk {
         color: var(--accent);
+    }
+
+    /* ============================================================
+   LISTS PAGES
+   ============================================================ */
+
+    .email,
+    .email-body,
+    .replies {
+        background: var(--bg-surface) !important;
+        border: 1px solid var(--border-default) !important;
+        border-radius: var(--radius-lg) !important;
+        padding: 0.5rem;
+        overflow: hidden;
+    }
+
+    .email-body,
+    .replies {
+        border: none !important;
+    }
+
+    .email-body blockquote {
+        background: var(--bg-raised);
+    }
+
+    .quoted-switch a,
+    .quoted-switch {
+        background: var(--bg-surface);
+        margin-bottom: 0.3rem;
+    }
+
+    .fa-thumbs-o-up {
+        color: var(--green);
+    }
+
+    .fa-thumbs-o-down {
+        color: var(--red);
+    }
+
+    .email-header {
+        font-family: var(--font-mono);
+    }
+
+    .all-lists table.lists .list-name {
+        font-family: var(--font-mono);
+        color: var(--accent);
+    }
+
+    .all-lists table.lists .list-name:active {
+        color: var(--yellow);
+    }
+
+    .table {
+        color: var(--text-primary);
+    }
+
+    .table > :not(:first-child) {
+        border-top: 2px solid var(--border-default);
+    }
+
+    .all-lists table.lists td {
+        border-top: 1px solid var(--border-default);
+        border-bottom: none;
+    }
+
+    .all-lists table.lists td:first-child {
+        border-left: none;
+    }
+
+    .all-lists table.lists td:last-child {
+        border-right: none;
+    }
+
+    .all-lists .header {
+        border-bottom: 1px solid var(--border-default);
+    }
+
+    .all-lists .header,
+    .all-lists nav.sort-mode a {
+        color: var(--text-primary);
+        font-family: var(--font-mono);
+    }
+
+    .all-lists table.lists tr.list:hover {
+        background: var(--accent) !important;
+    }
+
+    .page-item.disabled .page-link {
+        background: var(--bg-raised);
+        color: var(--text-muted);
+        border: 1px solid var(--border-default);
+    }
+
+    .page-item.active .page-link {
+        background: var(--accent);
+        color: var(--text-primary);
+        border: 1px solid var(--border-default);
+    }
+
+    .page-link {
+        color: var(--text-primary);
+        background: var(--bg-raised);
+        border: 1px solid var(--border-default);
+    }
+
+    .page-link:hover {
+        background: var(--accent);
+        color: var(--text-primary);
+        border: 1px solid var(--border-default);
+    }
+
+    .page-link:active {
+        background: var(--bg-surface);
+        color: var(--text-primary);
+        border: 1px solid var(--border-default);
+    }
+
+    .list-group-item {
+        background: var(--bg-raised);
+        color: var(--text-primary);
+        border: 1px solid var(--border-default);
+    }
+
+    .list-group-item:hover {
+        background: var(--bg-hover);
+        color: var(--text-primary);
+        border: 1px solid var(--border-default);
+    }
+
+    .list-group-item:active {
+        background: var(--bg-surface);
+        color: var(--text-primary);
+        border: 1px solid var(--border-default);
+    }
+
+    .overview .stats .chart-data {
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-md);
+    }
+
+    #thread-list .thread {
+        border-bottom: 1px solid var(--border-default);
+    }
+
+    .dropdown-menu {
+        background: var(--bg-raised);
+        border: 1px solid var(--border-default);
+    }
+
+    .dropdown-item {
+        color: var(--text-primary);
+    }
+
+    .dropdown-item:hover {
+        background: var(--bg-hover);
+        color: var(--text-primary);
+    }
+
+    footer {
+        background: var(--bg-surface);
+        border-top: 1px solid var(--border-default);
     }
 }
