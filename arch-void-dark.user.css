@@ -221,12 +221,22 @@
         border-radius: var(--radius-sm);
     }
 
+    .pkgsearch-typeahead {
+        background: var(--bg-raised);
+        border: 1px solid var(--border-default);
+        color: var(--text-primary);
+    }
+
+    .pkgsearch-typeahead li a {
+        color: var(--text-primary);
+    }
+
     div#cgit a {
         color: #07b;
     }
 
     /* only lists pages have `js-enabled` class, don't override visited on those */
-    body:not(.js-enabled) a:visited {
+    body:not(.js-enabled) a:not(:is(.pkgsearch-typeahead a)):visited {
         color: #87b;
     }
 
